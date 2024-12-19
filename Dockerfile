@@ -98,12 +98,10 @@ RUN mkdir -p /home/${NB_USER}/.jupyter && \
     echo "c.NotebookApp.ip = '0.0.0.0'" >> /home/${NB_USER}/.jupyter/jupyter_notebook_config.py && \
     echo "c.NotebookApp.allow_remote_access = True" >> /home/${NB_USER}/.jupyter/jupyter_notebook_config.py && \
     echo "c.NotebookApp.open_browser = False" >> /home/${NB_USER}/.jupyter/jupyter_notebook_config.py && \
-    echo "c.NotebookApp.notebook_dir = '/workspace'" >> /home/${NB_USER}/.jupyter/jupyter_notebook_config.py && \
-    echo "c.NotebookApp.token = ''" >> /home/${NB_USER}/.jupyter/jupyter_notebook_config.py && \
-    echo "c.NotebookApp.password = ''" >> /home/${NB_USER}/.jupyter/jupyter_notebook_config.py
+    echo "c.NotebookApp.notebook_dir = '/workspace'" >> /home/${NB_USER}/.jupyter/jupyter_notebook_config.py
 
 EXPOSE 8888
 
 WORKDIR /workspace
 
-CMD ["jupyter", "notebook", "--NotebookApp.token=''", "--NotebookApp.password=''", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
